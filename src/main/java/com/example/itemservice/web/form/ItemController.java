@@ -117,7 +117,7 @@ public class ItemController {
         // 검증 로직
         if (!StringUtils.hasText(item.getItemName())) errors.put("itemName", "Item name is necessary");
         if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) errors.put("price", "Price range is 1,000~ 1,000,000");
-        if (item.getQuantity() == null || item.getQuantity() > 9999) errors.put("item", "Max quantity of item is 9,999");
+        if (item.getQuantity() == null || item.getQuantity() > 9999) errors.put("quantity", "Max quantity of item is 9,999");
 
         // 특정 필드가 아닌 복합 룰 검증
         if (item.getPrice() != null && item.getQuantity() != null) {
