@@ -1,4 +1,4 @@
-package com.example.itemservice.web.form;
+package com.example.itemservice.web;
 
 import com.example.itemservice.domain.item.DeliveryCode;
 import com.example.itemservice.domain.item.Item;

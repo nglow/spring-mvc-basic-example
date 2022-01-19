@@ -1,13 +1,12 @@
-package com.example.itemservice.web.form;
+package com.example.itemservice.web;
 
 import com.example.itemservice.domain.item.DeliveryCode;
 import com.example.itemservice.domain.item.Item;
 import com.example.itemservice.domain.item.ItemRepository;
 import com.example.itemservice.domain.item.ItemType;
-import com.example.itemservice.web.form.validation.ItemValidator;
+import com.example.itemservice.web.validation.ItemValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;

@@ -1,7 +1,6 @@
 package com.example.itemservice.config;
 
-import com.example.itemservice.web.form.validation.ItemValidator;
-import org.springframework.context.annotation.Configuration;
+import com.example.itemservice.web.validation.ItemValidator;
 import org.springframework.validation.Validator;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 

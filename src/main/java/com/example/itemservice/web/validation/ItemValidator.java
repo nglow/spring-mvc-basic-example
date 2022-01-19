@@ -1,4 +1,4 @@
-package com.example.itemservice.web.form.validation;
+package com.example.itemservice.web.validation;
 
 import com.example.itemservice.domain.item.Item;
 import org.springframework.stereotype.Component;
