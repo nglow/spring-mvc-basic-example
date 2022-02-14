@@ -1,4 +1,4 @@
-package com.example.itemservice.web.form;
+package com.example.itemservice.web;
 
 import com.example.itemservice.domain.item.DeliveryCode;
 import com.example.itemservice.domain.item.Item;
@@ -8,20 +8,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/form/items")
 @Slf4j
 @RequiredArgsConstructor
-public class FormItemController {
+public class ItemController {
 
     private final ItemRepository itemRepository;
 
@@ -112,12 +110,33 @@ public class FormItemController {
     }
 
     @PostMapping("/add")
-    public String addItem(Item item, RedirectAttributes redirectAttributes) {
-        log.info("item.open={}", item.getOpen());
-        log.info("item.regions={}", item.getRegions());
-        log.info("item.itemType={}", item.getItemType());
+    public String addItem(Item item, RedirectAttributes redirectAttributes, Model model) {
+        // 검증 오류 결과를 보관
+        Map<String, String> errors = new HashMap<>();
 
+        // 검증 로직
+        if (!StringUtils.hasText(item.getItemName())) errors.put("itemName", "Item name is necessary");
+        if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) errors.put("price", "Price range is 1,000~ 1,000,000");
+        if (item.getQuantity() == null || item.getQuantity() > 9999) errors.put("quantity", "Max quantity of item is 9,999");
+
+        // 특정 필드가 아닌 복합 룰 검증
+        if (item.getPrice() != null && item.getQuantity() != null) {
+            var totalPrice = item.getPrice() * item.getQuantity();
+            if (totalPrice < 10000) errors.put("globalError", "Total price must be 1,0000 or more");
+        }
+
+        // 검증에 실패하면 다시 입력 폼으로
+        if (!errors.isEmpty()) {
+            log.error("errors = {}", errors);
+            model.addAttribute("errors", errors);
+            return "form/addForm";
+        }
+
+        // 성공 로직
         var itemPersisted = itemRepository.save(item);
+        log.info("Item is saved. item={}", item);
+
+        model.addAttribute("message", "Item is saved");
         redirectAttributes.addAttribute("itemId", itemPersisted.getId());
         redirectAttributes.addAttribute("status", true);
 
