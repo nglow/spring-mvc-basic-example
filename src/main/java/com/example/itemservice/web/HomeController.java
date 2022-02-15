@@ -2,6 +2,7 @@ package com.example.itemservice.web;
 
 import com.example.itemservice.domain.member.Member;
 import com.example.itemservice.domain.member.MemberRepository;
+import com.example.itemservice.web.argumentresolver.Login;
 import com.example.itemservice.web.session.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,8 +52,16 @@ public class HomeController {
         return "loginHome";
     }
 
-    @GetMapping("/")
+//    @GetMapping("/")
     public String homeLoginV3(@SessionAttribute(name = Session.LOGIN_MEMBER, required = false) Member member, Model model) {
+        if (member == null) return "home";
+
+        model.addAttribute("member", member);
+        return "loginHome";
+    }
+
+    @GetMapping("/")
+    public String homeLoginV3ArgumentResolver (@Login Member member, Model model) {
         if (member == null) return "home";
 
         model.addAttribute("member", member);
