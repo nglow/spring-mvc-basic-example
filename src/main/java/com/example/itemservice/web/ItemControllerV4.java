@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/form/v4/items")
+@RequestMapping("/items")
 @Slf4j
 @RequiredArgsConstructor
 public class ItemControllerV4 {
