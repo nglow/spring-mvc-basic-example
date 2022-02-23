@@ -8,7 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ItemRepositoryTest {
+class ItemRepository2Test {
 
     ItemRepository itemRepository = new ItemRepository();
 
