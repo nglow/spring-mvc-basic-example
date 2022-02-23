@@ -1,4 +1,4 @@
-package com.example.itemservice.fileupload.domain;
+package com.example.itemservice.fileupload.sample.domain;
 
 import lombok.Data;
 

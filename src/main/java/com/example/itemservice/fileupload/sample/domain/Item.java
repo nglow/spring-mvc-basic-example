@@ -1,4 +1,4 @@
-package com.example.itemservice.fileupload.domain;
+package com.example.itemservice.fileupload.sample.domain;
 
 import lombok.Data;
 
@@ -10,6 +10,6 @@ public class Item {
     private Long id;
     private String itemName;
     private UploadFile attachFile;
-    private List<UploadFile> imageFile;
+    private List<UploadFile> imageFiles;
 
 }

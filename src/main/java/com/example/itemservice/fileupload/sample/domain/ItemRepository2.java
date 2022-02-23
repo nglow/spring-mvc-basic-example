@@ -1,4 +1,4 @@
-package com.example.itemservice.fileupload.domain;
+package com.example.itemservice.fileupload.sample.domain;
 
 import org.springframework.stereotype.Repository;
 
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class ItemRepository {
+public class ItemRepository2 {
 
     private final Map<Long, Item> store = new HashMap<>();
     private long sequence = 0L;

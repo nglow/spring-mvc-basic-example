@@ -1,6 +1,6 @@
-package com.example.itemservice.fileupload.file;
+package com.example.itemservice.fileupload.sample.file;
 
-import com.example.itemservice.fileupload.domain.UploadFile;
+import com.example.itemservice.fileupload.sample.domain.UploadFile;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +15,7 @@ import java.util.UUID;
 public class FileStore {
 
 
-    private String fileDir;
+    private final String fileDir;
 
     public FileStore(@Value("${file.dir}") String fileDir) {
         this.fileDir = System.getProperty("user.dir") + fileDir;
